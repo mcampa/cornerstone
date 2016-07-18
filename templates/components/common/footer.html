@@ -19,6 +19,7 @@
                     <li>
                         <a href="{{urls.sitemap}}">{{lang 'sitemap.page_title'}}</a>
                     </li>
+                    <li>{{{snippet 'footer_navigate'}}}</li>
                 </ul>
             </article>
 
@@ -30,6 +31,7 @@
                             <a href="{{url}}">{{name}}</a>
                         </li>
                     {{/each}}
+                    <li>{{{snippet 'footer_categories'}}}</li>
                 </ul>
             </article>
 
@@ -42,6 +44,7 @@
                         </li>
                     {{/each}}
                     <li><a href="{{urls.brands}}">{{lang 'common.view_all'}}</a></li>
+                    <li>{{{snippet 'footer_brands'}}}</li>
                 </ul>
             </article>
 
@@ -51,6 +54,7 @@
                 {{#if settings.phone_number}}
                     <strong>{{lang 'footer.call_us' phone_number=settings.phone_number}}</strong>
                 {{/if}}
+                {{{snippet 'footer_info'}}}
             </article>
 
             <article class="footer-info-col" data-section-type="newsletterSubscription">
@@ -59,6 +63,7 @@
                 {{/if}}
                 {{> components/common/social-links}}
                 {{> components/common/payment-icons}}
+                {{{snippet 'footer_addons'}}}
             </article>
         </section>
         {{#if theme_settings.show_powered_by}}

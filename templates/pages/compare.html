@@ -21,6 +21,7 @@
                             </a>
                         </figure>
                         <div class="card-body">
+                            {{{snippet 'category_product_top'}}}
                             {{#if brand.name}}
                                 <p class="card-text"><a href="{{brand.url}}">{{ brand.name }}</a></p>
                             {{/if}}
@@ -28,6 +29,7 @@
                                 <a href="{{url}}">{{ name }}</a>
                             </h4>
                             {{> components/products/price price=price}}
+                            {{{snippet 'category_product_bottom'}}}
                         </div>
                     </article>
                 </th>

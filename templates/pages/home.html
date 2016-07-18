@@ -15,7 +15,6 @@ blog:
     {{#if carousel}}
         {{> components/carousel}}
     {{/if}}
-    {{{snippet 'home_content'}}}
 {{/partial}}
 
 {{#partial "page"}}
@@ -25,17 +24,22 @@ blog:
     {{/each}}
 
 <div class="main full">
+    {{{snippet 'home_top'}}}
+    
     {{#if products.featured}}
         {{> components/products/featured products=products.featured columns=theme_settings.homepage_featured_products_column_count}}
     {{/if}}
+    {{{snippet 'home_featured_products'}}}
 
     {{#if products.top_sellers}}
         {{> components/products/top products=products.top_sellers columns=theme_settings.homepage_top_products_column_count}}
     {{/if}}
+    {{{snippet 'home_top_sellers'}}}
 
     {{#if products.new}}
         {{> components/products/new products=products.new columns=theme_settings.homepage_new_products_column_count}}
     {{/if}}
+    {{{snippet 'home_new_products'}}}
 </div>
 {{/partial}}
 {{> layout/base}}
