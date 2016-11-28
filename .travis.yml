@@ -9,8 +9,10 @@ dist: trusty
 install:
   - bundle install
   - npm install -g grunt-cli
+  - npm install -g bigcommerce/stencil-cli
   - npm install
 
 script:
   - npm run check
   - grunt check
+  - stencil bundle
