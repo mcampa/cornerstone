@@ -5,6 +5,9 @@
   "private": true,
   "author": "Bigcommerce",
   "license": "MIT",
+  "scripts": {
+    "check": "node check.js"
+  },
   "devDependencies": {
     "@bigcommerce/citadel": "^2.11.5",
     "@bigcommerce/stencil-utils": "1.0.5",
