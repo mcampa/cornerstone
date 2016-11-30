@@ -1,18 +1,22 @@
 language: node_js
-
 node_js:
-  - 4
-
+- 4
 sudo: required
 dist: trusty
-
 install:
-  - bundle install
-  - npm install -g grunt-cli
-  - npm install -g bigcommerce/stencil-cli
-  - npm install
-
+- bundle install
+- npm install -g grunt-cli
+- npm install -g bigcommerce/stencil-cli
+- npm install
 script:
-  - npm run check
-  - grunt check
-  - stencil bundle
+- npm run check
+- grunt check
+- stencil bundle -n Cornerstone
+deploy:
+  provider: releases
+  api_key:
+    secure: QUDZtFvGssbtTXNVTDUttwCV10L767aF3ddO+6B8G68Hmzy2OCzFyfGfisHpgiIHb3EAj1oh15mUHwwsEBD+r9MbTGLmke9dmnebgeSLfPfqt8KKqCIXhPwUIQ3R24Mthn/GYGjEIcJf5JIveEVjvGwq9XEaAvJraI6xamvVWcqOorbPJNDiL9O4M5bWSYYFMVfXnLk9vm0hgl9UzWJa/bqMOEjss2c5SPG9BK+rWrq3QbPUzw6Q5UsAspDfVnSOlvNTkxlLWGQU8axb8y8DDWjDIyrcpVhyLhD7is9FmtbhKxjNGruBeu0L+7i/oAVfo7jyshirS+uF0czhR+kywZMGy/64p/AlPjydy7xL4cEM5eBzoSAzy34hEallOx8YihIajNQx7YNk4fxSNYN9EtAipFA2B8ndSn7XSzbY7Ggsl8n48ArajikiGS1H7lAPGjCUL1NpzCOTpJg9TRW+3O2H4coQSTZhJrG3CT5GD7uU/tCZgon8Aofrpr+vXOnm/qGSWxP0wvGEHeur2O+lWRde2uN85+aIUzWJ0TLOBPXdIbcDUJMmB5JUhgOZFylDCZVEBEuIW65SuNyrd5IOiC3SJk7nQmBgRbz1qQUvXN4e7MKG8YkcR8X4UjTuI3wCbR/aPL8GN6co7+nYDcz1SxAARVWAFMGomwOHTdkxjXA=
+  file: Cornerstone.zip
+  on:
+    repo: mcampa/stencil
+    branch: master
