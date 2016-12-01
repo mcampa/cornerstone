@@ -543,7 +543,7 @@
                 "enabled": "Only Featured Products",
                 "disabled": "Only Non-Featured Products"
             },
-            "categories": "CategoriesX",
+            "categories": "CategoriesXX",
             "did_you_mean": "Did you mean: <strong>{suggestion}</strong>",
             "no_match": "Your search for \"<strong>{query}</strong>\" did not match any products or information.",
             "suggestions": {
