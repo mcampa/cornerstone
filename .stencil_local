@@ -1,0 +1,21 @@
+{
+  "normalStoreUrl": "http://s1473460255.bcapp.dev/",
+  "port": "4040",
+  "customLayouts": {
+    "products": {},
+    "search": {},
+    "brand": {
+      "custom.html": "/brands/Sagaform.html"
+    },
+    "categories": {},
+    "page": {
+      "custom.html": "/home/",
+      "inspire-me-details.html": "/inspire-me-details/",
+      "inspire-me.html": "/inspire-me/",
+      "store.html": "/store/",
+      "stores.html": "/stores/"
+    }
+  },
+  "username": "mcampa",
+  "token": "7d291f049c6de34308a64f25c20669a3bf61b307"
+}
