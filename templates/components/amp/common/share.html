@@ -1,0 +1,22 @@
+{{#if settings.add_this.buttons}}
+    <div class="addthis_toolbox addthis_32x32_style" data-addthis:url="{{url}}"
+         data-addthis:title="{{title}}">
+        <ul class="socialLinks">
+            {{#each settings.add_this.buttons}}
+              {{#if service '!==' 'google'}}
+                {{#if service '!==' 'print'}}
+                  {{#if service '!==' 'facebook'}}
+                    <li class="socialLinks-item socialLinks-item--{{service}}">
+                      {{#if service '===' 'google_plusone'}}
+                          <amp-social-share type="gplus"></amp-social-share>
+                        {{else}}
+                          <amp-social-share type="{{service}}"></amp-social-share>
+                      {{/if}}
+                    </li>
+                  {{/if}}
+                {{/if}}
+              {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+{{/if}}
