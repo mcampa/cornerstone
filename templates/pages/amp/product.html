@@ -1,0 +1,20 @@
+---
+product:
+    videos:
+        limit: {{theme_settings.productpage_videos_count}}
+    reviews:
+        limit: {{theme_settings.productpage_reviews_count}}
+    related_products:
+        limit: {{theme_settings.productpage_related_products_count}}
+---
+{{#partial "amp-style"}}
+    {{> components/amp/products/styles }}
+{{/partial}}
+{{#partial "page"}}
+    {{> components/amp/common/header }}
+    <div itemscope itemtype="http://schema.org/Product">
+        {{> components/amp/products/product-view schema=true}}
+    </div>
+    {{> components/amp/common/footer }}
+{{/partial}}
+{{> layout/amp }}
