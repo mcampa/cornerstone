@@ -5,20 +5,15 @@
         </div>
     </div>
 {{/if}}
-<header class="header" role="banner">
-    <a href="#" class="mobileMenu-toggle" on='tap:amp-menu.toggle'>
-        <span class="mobileMenu-toggleIcon">Toggle menu</span>
-    </a>
 
-    {{#if template_file '===' 'pages/home'}}
-        <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">
-            {{> components/common/store-logo}}
-        </h1>
-    {{else}}
-        <div class="header-logo header-logo--{{theme_settings.logo-position}}">
-            {{> components/common/store-logo}}
-        </div>
-    {{/if}}
+<header class="amp-header">
+    <button class="amp-menu-button" on="tap:amp-menu.toggle">
+        Toggle menu
+    </button>
+
+    <div class="amp-header-logo">
+        {{> components/amp/common/store-logo}}
+    </div>
 </header>
 <amp-sidebar layout="nodisplay" id="amp-menu" data-menu>
     {{> components/amp/common/navigation-menu}}
