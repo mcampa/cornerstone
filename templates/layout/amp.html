@@ -10,10 +10,10 @@
         {{{ head.config }}}
         {{#block "head"}} {{/block}}
         <link href="{{ head.favicon }}" rel="shortcut icon">
+        <link href="https://fonts.googleapis.com/css?family=Karla:400|Montserrat:400|Oswald:300" rel="stylesheet">
 
         {{#block "amp-style"}} {{/block}}
 
-        <link href="https://fonts.googleapis.com/css?family=Karla:400|Montserrat:400|Oswald:300" rel="stylesheet">
 
         {{{head.rsslinks}}}
 
@@ -32,8 +32,6 @@
         <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
     </head>
     <body>
-        <div class="container">
-            {{#block "page"}} {{/block}}
-        </div>
+        {{#block "page"}} {{/block}}
     </body>
 </html>
