@@ -1,6 +1,5 @@
-{{> components/amp/products/product-view-details}}
 <div class="productView-options">
-    <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data" data-cart-item-add>
+    <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data" data-cart-item-add target="_self">
         <input type="hidden" name="action" value="add">
         <input type="hidden" name="product_id" value="{{product.id}}"/>
             {{#each product.customizations}}
@@ -98,5 +97,4 @@
             {{/if}}
         {{/if}}
     </form>
-    <button>Cancel</button>
 </div>
