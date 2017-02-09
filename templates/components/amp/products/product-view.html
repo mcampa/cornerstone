@@ -27,24 +27,19 @@
         </amp-carousel>
     </section>
     <div class="productView-action">
-        <button class="button button--primary button--wide" on="tap:product-options-lightbox" role="button" tabindex="0">Add To Cart</button>
-    </div>
-
-    <amp-lightbox id="product-options-lightbox" layout="nodisplay">
-        <div class="lightbox"
-            on="tap:product-options-lightbox.close"
-            role="button"
-            tabindex="0">
+        {{#if product.options}}
             <amp-iframe width="440"
-                height="725"
+                height="300"
                 layout="responsive"
                 sandbox="allow-scripts allow-forms"
                 frameborder="0"
                 src="{{product.amp_options_url}}">
                 <amp-img layout="fill" src="https://placeholdit.imgix.net/~text?txtsize=33&w=640&h=480" placeholder></amp-img>
             </amp-iframe>
-        </div>
-    </amp-lightbox>
+        {{else}}
+            <a class="button button--primary button--wide" role="button" href="{{product.cart_url}}">Add To Cart</a>
+        {{/if}}
+    </div>
 
     <amp-accordion class="productAccordion-wrapper">
         {{#if product.description}}
