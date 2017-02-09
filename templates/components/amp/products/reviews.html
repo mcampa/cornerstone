@@ -1,9 +1,9 @@
 {{#if reviews.total}}
-    <section class="ampAccordion">
-        <h4 class="ampAccordion-title">
+    <section expanded class="productAccordion">
+        <h4 class="productAccordion-title">
             {{lang 'products.reviews.header' total=reviews.total}}
         </h4>
-        <div class="ampAccordion-content">
+        <div class="productAccordion-content">
             <ul class="productReviews-list" id="productReviews-list">
                 {{#each reviews.list}}
                 <li class="productReview">

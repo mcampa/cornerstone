@@ -1,28 +1,28 @@
-<section class="ampAccordion" data-video-gallery>
-  <h4 class="ampAccordion-title">
-    {{lang 'products.videos.header'}}
-  </h4>
-  <div class="ampAccordion-content">
-    <amp-carousel width="640"
-      height="490"
-      layout="responsive"
-      type="slides">
-        {{#each this.list}}
-	    <div>
-		<div>
-	          <amp-youtube
-		    data-videoid="{{id}}"
-		    layout="responsive"
-		    width="640"
-		    height="390">
-	          </amp-youtube>
-		</div>
-	        <div class="video-body">
-                    <h5 class="video-title">{{title_long}}</h5>
-                    <p class="video-description">{{description_short}}</p>
+<section expanded class="productAccordion" data-video-gallery>
+    <h4 class="productAccordion-title">
+        {{lang 'products.videos.header'}}
+    </h4>
+    <div class="productAccordion-content">
+        <amp-carousel width="640"
+            height="490"
+            layout="responsive"
+            type="slides">
+            {{#each this.list}}
+                <div>
+                    <div>
+                        <amp-youtube
+                            data-videoid="{{id}}"
+                            layout="responsive"
+                            width="640"
+                            height="390">
+                        </amp-youtube>
+                    </div>
+                    <div class="video-body">
+                        <h5 class="video-title">{{title_long}}</h5>
+                        <p class="video-description">{{description_short}}</p>
+                    </div>
                 </div>
-	    </div>
-        {{/each}}
-    </amp-carousel>
-  </div>
+            {{/each}}
+        </amp-carousel>
+    </div>
 </section>

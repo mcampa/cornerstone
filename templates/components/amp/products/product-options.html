@@ -1,3 +1,4 @@
+{{> components/amp/products/product-view-details}}
 <div class="productView-options">
     <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data" data-cart-item-add>
         <input type="hidden" name="action" value="add">
@@ -97,4 +98,5 @@
             {{/if}}
         {{/if}}
     </form>
+    <button>Cancel</button>
 </div>
