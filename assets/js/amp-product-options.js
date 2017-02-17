@@ -34,9 +34,6 @@ window.stencilBootstrap = (contextJSON) => {
             $(() => {
                 const product = new Product(context);
                 product.context = context;
-
-                console.log(123);
-
                 series(product);
             });
         },
