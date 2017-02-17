@@ -28,13 +28,13 @@
     </section>
     <div class="productView-action">
         {{#if product.options}}
-            <amp-iframe width="440"
-                height="300"
-                layout="responsive"
-                sandbox="allow-scripts allow-forms"
+            <amp-iframe
+                height=400
+                layout="fixed-height"
+                sandbox="allow-scripts allow-forms allow-same-origin allow-top-navigation"
                 frameborder="0"
                 src="{{product.amp_options_url}}">
-                <amp-img layout="fill" src="https://placeholdit.imgix.net/~text?txtsize=33&w=640&h=480" placeholder></amp-img>
+                <amp-img layout="fixed-height" src="https://placeholdit.imgix.net/~text?txtsize=33&w=300&h=400" placeholder></amp-img>
             </amp-iframe>
         {{else}}
             <a class="button button--primary button--wide" role="button" href="{{product.cart_url}}">Add To Cart</a>
