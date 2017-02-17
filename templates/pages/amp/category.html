@@ -1,0 +1,52 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+{{#partial "amp-style"}}
+    {{> components/amp/products/styles }}
+{{/partial}}
+{{#partial "page"}}
+    {{> components/amp/common/header }}
+    {{#if category.image}}
+    <img src="{{getImage category.image 'zoom_size'}}">
+    {{/if}}
+    <h1 class="page-heading">{{category.name}}</h1>
+    {{{category.description}}}
+    {{{snippet 'categories'}}}
+    <div class="page">
+        <main class="page-content" id="product-listing-container">
+            {{#if category.products}}
+                {{> components/category/product-listing}}
+            {{else}}
+                <p>{{lang 'categories.no_products'}}</p>
+            {{/if}}
+        </main>
+    </div>
+    {{> components/amp/common/footer }}
+    <amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-KBMRB2Z&gtm.url=SOURCE_URL" data-credentials="include">
+        <script type="application/json">
+            {
+                "vars": {
+                    "storeId": {{settings.general.storeId}},
+                    "storeName": {{settings.store_name}},
+                    "pageType": {{page_type}},
+                    "categoryId": {{category.id}}
+                    "categoryUrl": {{category.url}}
+                    "categoryTitle": {{category.name}}
+                }
+            }
+        </script>
+    </amp-analytics>
+{{/partial}}
+{{> layout/amp}}
