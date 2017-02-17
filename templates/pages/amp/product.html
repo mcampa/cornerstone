@@ -15,6 +15,21 @@ product:
     <div itemscope itemtype="http://schema.org/Product">
         {{> components/amp/products/product-view schema=true}}
     </div>
+    <amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-KBMRB2Z&gtm.url=SOURCE_URL" data-credentials="include">
+        <script type="application/json">
+            {
+                "vars": {
+                    "storeId": {{settings.general.storeId}},
+                    "storeName": {{settings.store_name}},
+                    "pageType": {{page_type}},
+                    "productId": {{product.id}},
+                    "productUrl": {{product.url}},
+                    "productTitle": {{product.title}},
+                    "productSku": {{product.sku}}
+                }
+            }
+        </script>
+    </amp-analytics>
     {{> components/amp/common/footer }}
 {{/partial}}
 {{> layout/amp }}
