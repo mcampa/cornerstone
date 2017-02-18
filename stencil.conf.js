@@ -1,12 +1,10 @@
 var Path = require('path');
 var webpack = require('webpack');
 var webpackConfig = require('./webpack.conf.js');
-var bundleLocation = 'assets/js/bundle.js';
 
 webpackConfig.context = __dirname;
 webpackConfig.entry = {
-    'bundle': './assets/js/app.js',
-    'amp-product-options': './assets/js/amp-product-options.js',
+    'theme-bundle': './assets/js/app.js',
 };
 webpackConfig.output = {
     path: Path.join(__dirname, '/assets/dist'),
