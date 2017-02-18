@@ -8,7 +8,7 @@
         {{/if}}
     {{/each}}
 
-   {{> components/amp/products/product-view-details}}
+    {{> components/amp/products/product-view-details}}
     <section class="productView-images" data-image-gallery>
         <amp-carousel width="250"
             height="250"
@@ -27,17 +27,26 @@
         </amp-carousel>
     </section>
     <div class="productView-action">
-        {{#if product.options}}
-            <amp-iframe
-                height=400
-                layout="fixed-height"
-                sandbox="allow-scripts allow-forms allow-same-origin allow-top-navigation"
-                frameborder="0"
-                src="{{product.amp_options_url}}">
-                <amp-img layout="fixed-height" src="https://placeholdit.imgix.net/~text?txtsize=33&w=300&h=400" placeholder></amp-img>
-            </amp-iframe>
-        {{else}}
-            <a class="button button--primary button--wide" role="button" href="{{product.cart_url}}">Add To Cart</a>
+        {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+            {{#if product.options}}
+                <amp-iframe
+                    height=400
+                    layout="fixed-height"
+                    sandbox="allow-scripts allow-forms allow-same-origin allow-top-navigation"
+                    frameborder="0"
+                    src="{{product.amp_options_url}}">
+                    <amp-img layout="fixed-height" src="https://placeholdit.imgix.net/~text?txtsize=33&w=300&h=400" placeholder></amp-img>
+                </amp-iframe>
+            {{else}}
+                <a class="button button--primary button--wide" role="button" href="{{product.cart_url}}">Add To Cart</a>
+            {{/if}}
+        {{/or}}
+        {{#if product.out_of_stock}}
+            {{#if product.out_of_stock_message}}
+                {{>components/common/alert-error product.out_of_stock_message}}
+            {{else}}
+                {{>components/common/alert-error (lang 'products.sold_out')}}
+            {{/if}}
         {{/if}}
     </div>
 
