@@ -36,12 +36,6 @@
                 </select>
             </div>
         {{/if}}
-        <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
-            <label class="form-label form-label--alternate">
-                {{lang 'products.current_stock'}}
-                <span data-product-stock>{{product.stock_level}}</span>
-            </label>
-        </div>
         {{#if product.can_purchase}}
             <div class="form-field form-field--increments">
                 <label class="form-label form-label--alternate"
@@ -81,20 +75,10 @@
                 </div>
                 <p class="alertBox-column alertBox-message"></p>
             </div>
-            {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
-                <div class="form-action">
-                    <input id="form-action-addToCart" data-wait-message="{{lang 'products.adding_to_cart'}}" class="button button--primary" type="submit"
-                        value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}">
-                </div>
-                 {{{snippet 'product_addtocart'}}}
-            {{/or}}
-        {{/if}}
-        {{#if product.out_of_stock}}
-            {{#if product.out_of_stock_message}}
-                {{>components/common/alert-error product.out_of_stock_message}}
-            {{else}}
-                {{>components/common/alert-error (lang 'products.sold_out')}}
-            {{/if}}
+            <div class="form-action">
+                <input id="form-action-addToCart" data-wait-message="{{lang 'products.adding_to_cart'}}" class="button button--primary" type="submit"
+                    value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}">
+            </div>
         {{/if}}
     </form>
 </div>
