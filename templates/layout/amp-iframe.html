@@ -23,10 +23,10 @@
 
         {{#block "page"}} {{/block}}
 
-        <script src="{{cdn 'assets/dist/amp-product-options.js'}}"></script>
+        <script src="{{cdn 'assets/dist/theme-bundle.js'}}"></script>
         <script>
             // Exported in app.js
-            window.stencilBootstrap({{ jsContext }}).load();
+            window.stencilBootstrap("{{template_file}}", {{ jsContext }}, false).load();
         </script>
 
         {{{ footer.scripts }}}
