@@ -45145,7 +45145,6 @@
 	
 	
 	// We want to ensure that the events are bound to a single instance of the product details component
-	var previewModal = null;
 	var productSingleton = null;
 	
 	_stencilUtils2.default.hooks.on('cart-item-add', function (event, form) {
@@ -45168,6 +45167,7 @@
 	
 	        _classCallCheck(this, Product);
 	
+	        this.$overlay = (0, _jquery2.default)('[data-cart-item-add] .loadingOverlay');
 	        this.$scope = $scope;
 	        this.context = context;
 	        this.imageGallery = new _imageGallery2.default((0, _jquery2.default)('[data-image-gallery]', this.$scope));
@@ -45195,7 +45195,7 @@
 	
 	        $productOptionsElement.show();
 	
-	        previewModal = (0, _modal2.default)('#previewModal')[0];
+	        this.previewModal = (0, _modal2.default)('#this.previewModal')[0];
 	        productSingleton = this;
 	    }
 	
@@ -45345,11 +45345,15 @@
 	
 	        $addToCartBtn.val(waitMessage).prop('disabled', true);
 	
+	        this.$overlay.show();
+	
 	        // Add item to cart
 	        _stencilUtils2.default.api.cart.itemAdd(new FormData(form), function (err, response) {
 	            var errorMessage = err || response.data.error;
 	
 	            $addToCartBtn.val(originalBtnVal).prop('disabled', false);
+	
+	            _this4.$overlay.hide();
 	
 	            // Guard statement
 	            if (errorMessage) {
@@ -45363,9 +45367,15 @@
 	            }
 	
 	            // Open preview modal and update content
-	            previewModal.open();
+	            if (_this4.previewModal) {
+	                _this4.previewModal.open();
 	
-	            _this4.updateCartContent(previewModal, response.data.cart_item.hash);
+	                _this4.updateCartContent(_this4.previewModal, response.data.cart_item.hash);
+	            } else {
+	                _this4.$overlay.show();
+	                // if no modal, redirect to the cart page
+	                window.location = response.data.cart_item.cart_url || _this4.context.urls.cart;
+	            }
 	        });
 	    };
 	
@@ -48557,20 +48567,13 @@
 	exports.__esModule = true;
 	
 	exports.default = function () {
-	    // eslint-disable-next-line
-	    _pace2.default.start({
+	    __webpack_require__(388).start({
 	        document: false,
 	        ajax: {
 	            trackMethods: ['GET', 'POST']
 	        }
 	    });
 	};
-	
-	var _pace = __webpack_require__(388);
-	
-	var _pace2 = _interopRequireDefault(_pace);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
 /* 388 */

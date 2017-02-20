@@ -10,7 +10,6 @@ import modalFactory from '../global/modal';
 import _ from 'lodash';
 
 // We want to ensure that the events are bound to a single instance of the product details component
-let previewModal = null;
 let productSingleton = null;
 
 utils.hooks.on('cart-item-add', (event, form) => {
@@ -27,6 +26,7 @@ utils.hooks.on('product-option-change', (event, changedOption) => {
 
 export default class Product {
     constructor($scope, context, productAttributesData = {}) {
+        this.$overlay = $('[data-cart-item-add] .loadingOverlay')
         this.$scope = $scope;
         this.context = context;
         this.imageGallery = new ImageGallery($('[data-image-gallery]', this.$scope));
@@ -54,7 +54,7 @@ export default class Product {
 
         $productOptionsElement.show();
 
-        previewModal = modalFactory('#previewModal')[0];
+        this.previewModal = modalFactory('#this.previewModal')[0];
         productSingleton = this;
     }
 
@@ -198,6 +198,8 @@ export default class Product {
             .val(waitMessage)
             .prop('disabled', true);
 
+        this.$overlay.show();
+
         // Add item to cart
         utils.api.cart.itemAdd(new FormData(form), (err, response) => {
             const errorMessage = err || response.data.error;
@@ -205,6 +207,8 @@ export default class Product {
             $addToCartBtn
                 .val(originalBtnVal)
                 .prop('disabled', false);
+
+            this.$overlay.hide();
 
             // Guard statement
             if (errorMessage) {
@@ -218,9 +222,15 @@ export default class Product {
             }
 
             // Open preview modal and update content
-            previewModal.open();
+            if (this.previewModal) {
+                this.previewModal.open();
 
-            this.updateCartContent(previewModal, response.data.cart_item.hash);
+                this.updateCartContent(this.previewModal, response.data.cart_item.hash);
+            } else {
+                this.$overlay.show();
+                // if no modal, redirect to the cart page
+                window.location = response.data.cart_item.cart_url || this.context.urls.cart;
+            }
         });
     }
 
