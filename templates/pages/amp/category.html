@@ -14,25 +14,30 @@ category:
     {{/if}}
 {{/partial}}
 {{#partial "amp-style"}}
-    {{> components/amp/products/styles }}
+    {{> components/amp/category/styles }}
 {{/partial}}
 {{#partial "page"}}
     {{> components/amp/common/header }}
     {{#if category.image}}
-    <img src="{{getImage category.image 'zoom_size'}}">
+        <div class="categoryView-img">
+            <amp-img src="{{getImage category.image 'zoom_size'}}" width="300" height="150" layout="responsive" alt="{{category.name}}"></amp-img>
+        </div>
     {{/if}}
-    <h1 class="page-heading">{{category.name}}</h1>
-    {{{category.description}}}
-    {{{snippet 'categories'}}}
-    <div class="page">
-        <main class="page-content" id="product-listing-container">
-            {{#if category.products}}
-                {{> components/category/product-listing}}
-            {{else}}
-                <p>{{lang 'categories.no_products'}}</p>
-            {{/if}}
-        </main>
+    <div class="container">
+        <h1 class="categoryView-title">
+            {{category.name}}
+        </h1>
+        {{{category.description}}}
+        {{{snippet 'categories'}}}
     </div>
+    <main class="page-content" id="product-listing-container">
+        {{#if category.products}}
+            {{> components/amp/category/product-listing}}
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+    {{> components/amp/category/subcategories}}
     {{> components/amp/common/footer }}
     <amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-KBMRB2Z&gtm.url=SOURCE_URL" data-credentials="include">
         <script type="application/json">
@@ -50,3 +55,4 @@ category:
     </amp-analytics>
 {{/partial}}
 {{> layout/amp}}
+
