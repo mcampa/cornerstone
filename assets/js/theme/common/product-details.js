@@ -87,6 +87,18 @@ export default class Product {
     }
 
     /**
+     * Checks if the current window is being run inside an iframe
+     * @returns {boolean}
+     */
+    isRunningInIframe() {
+        try {
+            return this.window.self !== this.window.top;
+        } catch (e) {
+            return true;
+        }
+    }
+
+    /**
      *
      * Handle product options changes
      *
@@ -216,9 +228,7 @@ export default class Product {
                 const tmp = document.createElement('DIV');
                 tmp.innerHTML = errorMessage;
 
-                alert(tmp.textContent || tmp.innerText);
-
-                return;
+                return alert(tmp.textContent || tmp.innerText);
             }
 
             // Open preview modal and update content
@@ -229,7 +239,7 @@ export default class Product {
             } else {
                 this.$overlay.show();
                 // if no modal, redirect to the cart page
-                window.location = response.data.cart_item.cart_url || this.context.urls.cart;
+                this.redirectTo(response.data.cart_item.cart_url || this.context.urls.cart);
             }
         });
     }
@@ -256,6 +266,19 @@ export default class Product {
         };
 
         utils.api.cart.getContent(options, onComplete);
+    }
+
+    /**
+     * Redirect to url
+     *
+     * @param {String} url
+     */
+    redirectTo(url) {
+        if (this.isRunningInIframe()) {
+            window.top.location = url;
+        } else {
+            window.location = url;
+        }
     }
 
     /**
