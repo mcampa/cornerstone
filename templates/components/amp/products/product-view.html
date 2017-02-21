@@ -29,13 +29,13 @@
     <div class="productView-action">
         {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
             {{#if product.options}}
-                <amp-iframe
-                    height="400"
-                    layout="fixed-height"
-                    sandbox="allow-scripts allow-forms allow-same-origin allow-top-navigation"
-                    frameborder="0"
+                <amp-iframe height="400" width="250"
+                    layout="responsive"
+                    sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation"
+                    resizable
+                    sandbox="allow-scripts allow-forms allow-top-navigation"
                     src="{{product.amp_options_url}}">
-                    <amp-img layout="fixed-height" src="https://placeholdit.imgix.net/~text?txtsize=33&w=300&h=400" placeholder></amp-img>
+                    <div class="button button--primary button--wide" overflow tabindex="0" role="button">Choose Options</div>
                 </amp-iframe>
             {{else}}
                 <a class="button button--primary button--wide" role="button" href="{{product.cart_url}}">Add To Cart</a>
