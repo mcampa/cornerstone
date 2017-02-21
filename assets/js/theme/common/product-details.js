@@ -26,7 +26,7 @@ utils.hooks.on('product-option-change', (event, changedOption) => {
 
 export default class Product {
     constructor($scope, context, productAttributesData = {}) {
-        this.$overlay = $('[data-cart-item-add] .loadingOverlay')
+        this.$overlay = $('[data-cart-item-add] .loadingOverlay');
         this.$scope = $scope;
         this.context = context;
         this.imageGallery = new ImageGallery($('[data-image-gallery]', this.$scope));

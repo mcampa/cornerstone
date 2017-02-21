@@ -1,7 +1,6 @@
 import 'babel-polyfill';
 
 import $ from 'jquery';
-import async from 'async';
 import account from './theme/account';
 import auth from './theme/auth';
 import blog from './theme/blog';
@@ -97,8 +96,13 @@ window.stencilBootstrap = function stencilBootstrap(templateFile, contextJSON = 
                     pageClass.context = context;
                 }
 
-                globalClass && globalClass.load();
-                pageClass && pageClass.load();
+                if (globalClass) {
+                    globalClass.load();
+                }
+
+                if (pageClass) {
+                    pageClass.load();
+                }
             });
         },
     };
