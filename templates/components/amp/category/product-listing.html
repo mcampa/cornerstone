@@ -1,11 +1,7 @@
-<div class="container">
-	{{> components/amp/category/filter sort=pagination.category.sort}}
-</div>
-
 {{#if theme_settings.product_list_display_mode '===' 'grid'}}
-    {{> components/amp/products/grid products=category.products show_compare=category.show_compare theme_settings=theme_settings}}
+    {{> components/amp/products/grid products=category.products}}
 {{else}}
-    {{> components/products/list products=category.products show_compare=category.show_compare theme_settings=theme_settings}}
+    {{> components/amp/products/list products=category.products}}
 {{/if}}
 
 {{> components/amp/common/paginator pagination.category}}
