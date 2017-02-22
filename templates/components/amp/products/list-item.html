@@ -1,12 +1,12 @@
 <article class="listItem">
     <figure class="listItem-figure">
-        <img class="listItem-image" src="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}" alt="{{image.alt}}" title="{{image.alt}}">
+        <amp-img src="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}" width="300" height="300" layout="responsive" alt="{{image.alt}}"></amp-img>
     </figure>
     <div class="listItem-body">
         <div class="listItem-content">
             <div class="listItem-details">
                 {{#if show_rating}}
-                    <p class="listItem-rating">{{> components/products/ratings rating=rating}}</p>
+                    <p class="listItem-rating">{{> components/amp/products/ratings rating=rating}}</p>
                 {{/if}}
                 {{#if brand.name}}
                 <p class="listItem-brand">{{brand.name}}</p>
@@ -15,7 +15,7 @@
                     <a href="{{url}}">{{name}}</a>
                 </h4>
                 {{#if summary}}
-                    <p>{{summary}}</p>
+                    <p class="listItem-summary">{{summary}}</p>
                 {{/if}}
             </div>
             <div class="listItem-actions">
