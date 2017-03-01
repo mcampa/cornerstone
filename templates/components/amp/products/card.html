@@ -7,7 +7,7 @@
                 </div>
             {{/if}}
         {{/or}}
-        <a href="{{url}}">
+        <a data-vars-product-link="{{url}}" data-vars-product-id="{{id}}" data-vars-product-name="{{name}}" href="{{url}}">
             <amp-img class="card-image" src="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}" width="300" height="300" layout="responsive" alt="{{image.alt}}"></amp-img>
         </a>
     </figure>

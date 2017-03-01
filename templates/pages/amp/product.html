@@ -24,19 +24,26 @@ product:
     <div itemscope itemtype="http://schema.org/Product">
         {{> components/amp/products/product-view schema=true}}
     </div>
-    <amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-KBMRB2Z&gtm.url=SOURCE_URL" data-credentials="include">
+    <amp-analytics type="googleanalytics">
         <script type="application/json">
-            {
-                "vars": {
-                    "storeId": "{{settings.general.storeId}}",
-                    "storeName": "{{settings.store_name}}",
-                    "pageType": "{{page_type}}",
-                    "productId": "{{product.id}}",
-                    "productUrl": "{{product.url}}",
-                    "productTitle": "{{product.title}}",
-                    "productSku": "{{product.sku}}"
+        {
+            "vars": {
+                "account": "{{theme_settings.amp_analytics_id}}"
+            },
+            "extraUrlParams": {
+                "cd1": "{{page_type}}",
+                "cd2": "{{product.id}}",
+                "cd3": "{{product.url}}",
+                "cd4": "{{product.title}}",
+                "cd5": "{{product.sku}}"
+            },
+            "triggers": {
+                "trackPageview": {
+                    "on": "visible",
+                    "request": "pageview"
                 }
             }
+        }
         </script>
     </amp-analytics>
     {{> components/amp/common/footer }}
