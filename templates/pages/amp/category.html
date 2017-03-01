@@ -42,18 +42,39 @@ category:
     </main>
     {{> components/amp/category/subcategories}}
     {{> components/amp/common/footer }}
-    <amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-KBMRB2Z&gtm.url=SOURCE_URL" data-credentials="include">
+    <amp-analytics type="googleanalytics">
         <script type="application/json">
-            {
-                "vars": {
-                    "storeId": "{{settings.general.storeId}}",
-                    "storeName": "{{settings.store_name}}",
-                    "pageType": "{{page_type}}",
-                    "categoryId": "{{category.id}}",
-                    "categoryUrl": "{{category.url}}",
-                    "categoryTitle": "{{category.name}}"
+        {
+            "vars": {
+                "account": "{{theme_settings.amp_analytics_id}}"
+            },
+            "extraUrlParams": {
+                "cd1": "{{page_type}}",
+                "cd2": "{{category.id}}",
+                "cd3": "{{category.url}}",
+                "cd4": "{{category.name}}"
+            },
+            "triggers": {
+                "trackPageview": {
+                    "on": "visible",
+                    "request": "pageview"
+                },
+                "trackClickOnProductCard" : {
+                    "on": "click",
+                    "selector": ".card-figure a",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "Category",
+                        "eventAction": "Product Card"
+                    },
+                    "extraUrlParams": {
+                        "cd5": "${productLink}",
+                        "cd6": "${productId}",
+                        "cd7": "${productName}"
+                    }
                 }
             }
+        }
         </script>
     </amp-analytics>
 {{/partial}}
