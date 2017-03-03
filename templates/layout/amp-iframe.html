@@ -29,6 +29,20 @@
             // Exported in app.js
             window.stencilBootstrap("{{template_file}}", {{ jsContext }}, false).load();
         </script>
+        <script type="text/javascript" charset="utf-8">
+            function postHeight() {
+                window.parent.postMessage({
+                    sentinel: 'amp',
+                    type: 'embed-size',
+                    height: window.document.querySelector('body').offsetHeight
+                }, '*');
+            }
+
+            window.addEventListener("DOMContentLoaded", function () {
+                window.addEventListener('resize', postHeight);
+                postHeight();
+            }, false);
+        </script>
 
         {{{ footer.scripts }}}
     </body>
