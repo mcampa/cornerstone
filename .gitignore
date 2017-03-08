@@ -2,5 +2,6 @@ node_modules/
 .stencil
 .DS_Store
 assets/css-artifacts
+assets/js/bundle.js
 dist/
 *.js.map

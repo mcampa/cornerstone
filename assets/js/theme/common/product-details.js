@@ -92,7 +92,7 @@ export default class Product {
      */
     isRunningInIframe() {
         try {
-            return this.window.self !== this.window.top;
+            return window.self !== window.top;
         } catch (e) {
             return true;
         }
@@ -274,7 +274,7 @@ export default class Product {
      * @param {String} url
      */
     redirectTo(url) {
-        if (this.isRunningInIframe()) {
+        if (this.isRunningInIframe() && !window.iframeSdk) {
             window.top.location = url;
         } else {
             window.location = url;
