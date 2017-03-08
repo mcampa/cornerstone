@@ -6,8 +6,7 @@
             <small>{{lang 'common.required'}}</small>
         {{/if}}
     </label>
-
-    <input 
+    <input
         class="form-checkbox"
         type="checkbox"
         name="attribute[{{id}}]"
@@ -15,6 +14,5 @@
         value="{{value}}"
         {{#if checked}}checked{{/if}}
         {{#if required}}required{{/if}}>
-
     <label class="form-label {{class}}" for="attribute-{{id}}">{{label}}</label>
 </div>

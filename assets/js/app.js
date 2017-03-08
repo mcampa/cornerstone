@@ -87,7 +87,7 @@ window.stencilBootstrap = function stencilBootstrap(templateFile, contextJSON = 
                 const PageClass = pageClasses[templateFile];
 
                 if (loadGlobal) {
-                    globalClass = new Global;
+                    globalClass = new Global();
                     globalClass.context = context;
                 }
 
