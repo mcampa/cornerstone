@@ -41,6 +41,25 @@ product:
                 "trackPageview": {
                     "on": "visible",
                     "request": "pageview"
+                },
+                "trackClickOnAddToCart" : {
+                    "on": "click",
+                    "selector": ".productView-action a, .card-title a",
+                    "request": "event",
+                    "vars": {
+                        "eventCategory": "Product",
+                        "eventAction": "Add to Cart"
+                    }
+                },
+                "trackClickOnSocialLink" : {
+                    "on": "click",
+                    "selector": ".amp-social-share",
+                    "request": "social",
+                    "vars": {
+                        "socialNetwork": "${socialType}",
+                        "socialAction": "Share",
+                        "socialTarget": "${productLink}"
+                    }
                 }
             }
         }
