@@ -3,7 +3,7 @@ module.exports = function(grunt) {
     require('load-grunt-config')(grunt, {
         jitGrunt: {
             staticMappings: {
-                scsslint: 'grunt-scss-lint'
+                scsslint: 'grunt-scss-lint',
             }
         }
     });
